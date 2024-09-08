@@ -278,7 +278,7 @@ final class Elementor_Addon_Extension
     public function elementor_addon_category()
     {
         \Elementor\Plugin::$instance->elements_manager->add_category(
-            'elementor-addon',
+            'elementor-addon-category',
             [
                 'title' => __('Elementor Addon Category', 'elementor-addon'),
                 'icon' => 'fa fa-plug',
