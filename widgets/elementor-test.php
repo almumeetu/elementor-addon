@@ -70,7 +70,25 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::HIDDEN,
 				'default' => 'traditional',
 			]
-		);	
+		);
+		
+		//Select
+		$this->add_control(
+			'color',
+			[
+				'label' => esc_html__( 'Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'red',
+				'options' => [
+					'yellow' => esc_html__( 'Yellow', 'elementor-addon' ),
+					'red' => esc_html__( 'Red', 'elementor-addon' ),
+					'green'  => esc_html__( 'Green', 'elementor-addon' ),
+					'blue' => esc_html__( 'Blue', 'elementor-addon' ),
+					'none' => esc_html__( 'None', 'elementor-addon' ),
+				],
+			]
+		);
+
 
 		$this->end_controls_section();
     }
@@ -83,7 +101,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				echo 'Hello World';
 			}
 		?>
-		<h4>Title: <?php echo $settings['title']; ?></h4>        
+		<h4 style="Color:<?php echo $settings['color']; ?>">Title: <?php echo $settings['title']; ?></h4>        
 		<h4>Number: <?php echo $settings['number']; ?></h4>        
 		<h4>Description: <?php echo $settings['desc']; ?></h4>        
 		<h4>Rich description: <?php echo $settings['rich_descr']; ?></h4>  
