@@ -40,6 +40,20 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+		//Hidden Controls
+        $this->add_control(
+			'show_title',
+			[
+				'label' => esc_html__( 'Show Title', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'elementor-addon'),
+				'label_off' => esc_html__( 'Hide', 'elementor-addon'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+
+			]
+		);
+
 
         $this->add_control(
 			'title',
@@ -49,15 +63,36 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				'placeholder' => esc_html__( 'Enter your title', 'elementor-addon' ),
 			]
 		);
+		$this->add_control(
+			'hidden',
+			[
+				'label' => esc_html__( 'View', 'elementor-addon' ),
+				'tab' => \Elementor\Controls_Manager::HIDDEN,
+				'default' => 'traditional',
+			]
+		);	
 
 		$this->end_controls_section();
     }
     protected function render() {
 
         $settings = $this->get_settings_for_display();
-        
-        echo $settings['title'];
+		?>
+		<?php 
+			if($settings['show_title']=='yes'){
+				echo 'Hello World';
+			}
+		?>
+		<h4>Title: <?php echo $settings['title']; ?></h4>        
+		<h4>Number: <?php echo $settings['number']; ?></h4>        
+		<h4>Description: <?php echo $settings['desc']; ?></h4>        
+		<h4>Rich description: <?php echo $settings['rich_descr']; ?></h4>  
+		
+		<code>
+			<?php echo $settings ['code']; ?>
+		</code>
+		<?php
 
-    }
+	}
 
 }
