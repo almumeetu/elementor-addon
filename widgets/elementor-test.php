@@ -100,6 +100,31 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+
+		//Rich Description
+		$this->add_control(
+			'rich_description',
+			[
+				'label' => esc_html__( 'Rich Description', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'Default description', 'elementor-addon' ),
+				'placeholder' => esc_html__( 'Type your description here', 'elementor-addon' ),
+			]
+		);
+
+
+		//Custol Html
+		$this->add_control(
+			'custom_html',
+			[
+				'label' => esc_html__( 'Custom HTML', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::CODE,
+				'language' => 'html',
+				'rows' => 20,
+			]
+		);
+
+
 		//Hidden
 		$this->add_control(
 			'hidden',
@@ -194,11 +219,11 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		<h4 style="Color:<?php echo $settings['color']; ?>">Title: <?php echo $settings['title']; ?></h4>
 		<h4>Mobile Number: <?php echo $settings['mobile_number']; ?></h4>
 		<h4>Description: <?php echo $settings['item_description']; ?></h4>
-		<h4>Rich description: <?php echo $settings['rich_descr']; ?></h4>
+		<h4>Rich description: <?php echo $settings['rich_description']; ?></h4>
 
 
 		<code>
-			<?php echo $settings['code']; ?>
+			<?php echo $settings['custom_html']; ?>
 		</code>
 <?php
 
