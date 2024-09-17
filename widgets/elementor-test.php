@@ -52,6 +52,45 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Color
+		$this->add_control(
+			'color_option',
+			[
+				'label' => esc_html__( 'Color Option', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .test' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-addon' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-addon' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-addon' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .h2' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
 		//Hidden Controls
 		$this->add_control(
 			'show_title',
@@ -216,10 +255,11 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			?>
 		</ul>
 
-		<h4 style="Color:<?php echo $settings['color']; ?>">Title: <?php echo $settings['title']; ?></h4>
+		<h2 style="text-align:<?php echo $settings['text_align']; ?>">Title: <?php echo $settings['title']; ?></h2>
 		<h4>Mobile Number: <?php echo $settings['mobile_number']; ?></h4>
 		<h4>Description: <?php echo $settings['item_description']; ?></h4>
-		<h4>Rich description: <?php echo $settings['rich_description']; ?></h4>
+		<h4 class="test">Rich description: <?php echo $settings['rich_description']; ?></h4>
+		<h4 class="test">Test World</h4>
 
 
 		<code>
