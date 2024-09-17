@@ -40,6 +40,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+
 		//Hidden Controls
         $this->add_control(
 			'show_title',
@@ -90,6 +91,19 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		);
 
 
+
+		$this->end_controls_section();
+
+
+
+		
+		$this->start_controls_section(
+			'section_content_2',
+			[
+				'label' => esc_html__( 'Content_2', 'elementor-addon' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
 		$this->end_controls_section();
     }
     protected function render() {
