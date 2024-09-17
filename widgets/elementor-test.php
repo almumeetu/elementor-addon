@@ -52,11 +52,22 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Gallery
+		$this->add_control(
+			'gallery',
+			[
+				'label' => esc_html__( 'Add Images', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::GALLERY,
+				'show_label' => false,
+				'default' => [],
+			]
+		);
+
 		//Font
 		$this->add_control(
 			'font_family',
 			[
-				'label' => esc_html__( 'Font Family', 'elementor-addon' ),
+				'label' => esc_html__('Font Family', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::FONT,
 				'default' => "'Open Sans', sans-serif",
 				'selectors' => [
@@ -69,7 +80,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'icon',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-addon' ),
+				'label' => esc_html__('Icon', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-star',
@@ -83,7 +94,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'color_option',
 			[
-				'label' => esc_html__( 'Color Option', 'elementor-addon' ),
+				'label' => esc_html__('Color Option', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .test' => 'color: {{VALUE}}',
@@ -94,19 +105,19 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'text_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-addon' ),
+				'label' => esc_html__('Alignment', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-addon' ),
+						'title' => esc_html__('Left', 'elementor-addon'),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-addon' ),
+						'title' => esc_html__('Center', 'elementor-addon'),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-addon' ),
+						'title' => esc_html__('Right', 'elementor-addon'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -117,6 +128,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 				],
 			]
 		);
+
 
 		//Hidden Controls
 		$this->add_control(
@@ -171,10 +183,10 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'rich_description',
 			[
-				'label' => esc_html__( 'Rich Description', 'elementor-addon' ),
+				'label' => esc_html__('Rich Description', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Default description', 'elementor-addon' ),
-				'placeholder' => esc_html__( 'Type your description here', 'elementor-addon' ),
+				'default' => esc_html__('Default description', 'elementor-addon'),
+				'placeholder' => esc_html__('Type your description here', 'elementor-addon'),
 			]
 		);
 
@@ -183,7 +195,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'custom_html',
 			[
-				'label' => esc_html__( 'Custom HTML', 'elementor-addon' ),
+				'label' => esc_html__('Custom HTML', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::CODE,
 				'language' => 'html',
 				'rows' => 20,
@@ -221,17 +233,17 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'show_elements',
 			[
-				'label' => esc_html__( 'Show Elements', 'elementor-addon' ),
+				'label' => esc_html__('Show Elements', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'label_block' => true,
 				'multiple' => true,
 				'options' => [
-					'title'  => esc_html__( 'Title', 'elementor-addon' ),
-					'description' => esc_html__( 'Description', 'elementor-addon' ),
-					'mobile_number' => esc_html__( 'Mobile Number', 'elementor-addon' ),
-					'button' => esc_html__( 'Button', 'elementor-addon' ),
+					'title'  => esc_html__('Title', 'elementor-addon'),
+					'description' => esc_html__('Description', 'elementor-addon'),
+					'mobile_number' => esc_html__('Mobile Number', 'elementor-addon'),
+					'button' => esc_html__('Button', 'elementor-addon'),
 				],
-				'default' => [ 'title', 'description' ],
+				'default' => ['title', 'description'],
 			]
 		);
 		$this->end_controls_section();
@@ -286,7 +298,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		<h2 style="text-align:<?php echo $settings['text_align']; ?>">Title: <?php echo $settings['title']; ?></h2>
 		<h4>Mobile Number: <?php echo $settings['mobile_number']; ?></h4>
 		<h4>Description: <?php echo $settings['item_description']; ?></h4>
-		<h4 class="test">Rich description: <?php echo $settings['rich_description']; ?></h4>
+		<h4>Rich description: <?php echo $settings['rich_description']; ?></h4>
 		<h4 class="test">Test World</h4>
 
 
