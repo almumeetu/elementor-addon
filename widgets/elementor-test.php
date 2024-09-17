@@ -52,6 +52,33 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Font
+		$this->add_control(
+			'font_family',
+			[
+				'label' => esc_html__( 'Font Family', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::FONT,
+				'default' => "'Open Sans', sans-serif",
+				'selectors' => [
+					'{{WRAPPER}} .test' => 'font-family: {{VALUE}}',
+				],
+			]
+		);
+
+		//Icon
+		$this->add_control(
+			'icon',
+			[
+				'label' => esc_html__( 'Icon', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'solid',
+				],
+
+			]
+		);
+
 		//Color
 		$this->add_control(
 			'color_option',
@@ -255,6 +282,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			?>
 		</ul>
 
+		<i class="<?php echo $settings['icon']['value']; ?>"></i>
 		<h2 style="text-align:<?php echo $settings['text_align']; ?>">Title: <?php echo $settings['title']; ?></h2>
 		<h4>Mobile Number: <?php echo $settings['mobile_number']; ?></h4>
 		<h4>Description: <?php echo $settings['item_description']; ?></h4>
