@@ -66,6 +66,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Title
 		$this->add_control(
 			'title',
 			[
@@ -74,27 +75,32 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 				'placeholder' => esc_html__('Enter your title', 'elementor-addon'),
 			]
 		);
+
+		//Description
 		$this->add_control(
 			'item_description',
 			[
-				'label' => esc_html__( 'Description', 'elementor-addon' ),
+				'label' => esc_html__('Description', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 10,
-				'default' => esc_html__( 'Write Your Description', 'elementor-addon' ),
-				'placeholder' => esc_html__( 'Type your description here', 'elementor-addon' ),
+				'default' => esc_html__('Write Your Description', 'elementor-addon'),
+				'placeholder' => esc_html__('Type your description here', 'elementor-addon'),
 			]
 		);
+
+		//Mobile Number
 		$this->add_control(
 			'mobile_number',
 			[
-				'label' => esc_html__( 'Enter Your Mobile Number', 'elementor-addon' ),
+				'label' => esc_html__('Enter Your Mobile Number', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'e.g. +880 1722 301927', 'elementor-addon' ),
+				'placeholder' => esc_html__('e.g. +880 1722 301927', 'elementor-addon'),
 				'default' => '',
 				'label_block' => true,
 			]
 		);
-		
+
+		//Hidden
 		$this->add_control(
 			'hidden',
 			[
@@ -118,6 +124,23 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 					'blue' => esc_html__('Blue', 'elementor-addon'),
 					'none' => esc_html__('None', 'elementor-addon'),
 				],
+			]
+		);
+
+		$this->add_control(
+			'show_elements',
+			[
+				'label' => esc_html__( 'Show Elements', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options' => [
+					'title'  => esc_html__( 'Title', 'elementor-addon' ),
+					'description' => esc_html__( 'Description', 'elementor-addon' ),
+					'mobile_number' => esc_html__( 'Mobile Number', 'elementor-addon' ),
+					'button' => esc_html__( 'Button', 'elementor-addon' ),
+				],
+				'default' => [ 'title', 'description' ],
 			]
 		);
 		$this->end_controls_section();
@@ -153,9 +176,21 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		}
 		?>
 
-		<pre>
-			<?php ?>
-		</pre>
+		<!-- <pre>
+			<?php print_r($settings['show_elements']); ?>
+		</pre> -->
+
+		<ul>
+			<?php
+			$elements = $settings['show_elements'];
+			foreach ($elements as $element) {
+			?>
+				<li><?php echo $element; ?></li>
+			<?php
+			}
+			?>
+		</ul>
+
 		<h4 style="Color:<?php echo $settings['color']; ?>">Title: <?php echo $settings['title']; ?></h4>
 		<h4>Mobile Number: <?php echo $settings['mobile_number']; ?></h4>
 		<h4>Description: <?php echo $settings['item_description']; ?></h4>
