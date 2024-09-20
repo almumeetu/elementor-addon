@@ -52,6 +52,51 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Repeater
+		$this->add_control(
+			'list',
+			[
+				'label' => esc_html__( 'Repeater List', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => [
+					[
+						'name' => 'list_title',
+						'label' => esc_html__( 'Title', 'elementor-addon' ),
+						'type' => \Elementor\Controls_Manager::TEXT,
+						'default' => esc_html__( 'List Title' , 'elementor-addon' ),
+						'label_block' => true,
+					],
+					[
+						'name' => 'list_content',
+						'label' => esc_html__( 'Content', 'elementor-addon' ),
+						'type' => \Elementor\Controls_Manager::WYSIWYG,
+						'default' => esc_html__( 'List Content' , 'elementor-addon' ),
+						'show_label' => false,
+					],
+					[
+						'name' => 'list_color',
+						'label' => esc_html__( 'Color', 'elementor-addon' ),
+						'type' => \Elementor\Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
+						],
+					]
+				],
+				'default' => [
+					[
+						'list_title' => esc_html__( 'Title #1', 'elementor-addon' ),
+						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'elementor-addon' ),
+					],
+					[
+						'list_title' => esc_html__( 'Title #2', 'elementor-addon' ),
+						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'elementor-addon' ),
+					],
+				],
+				'title_field' => '{{{ list_title }}}',
+			]
+		);
+
+
 		//Gallery
 		$this->add_control(
 			'gallery',
@@ -278,6 +323,18 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			echo 'Hello World';
 		}
 		?>
+
+		<?php 
+		$lists=$settings['list'];
+		foreach($lists as $list){
+			?>
+			<h4><?php echo $list['list_title']; ?></h4>
+			<p><?php echo $list['list_content']; ?></p>
+			<?php
+		}
+		
+		?>
+
 
 		<?php 
 		$images=$settings['gallery'];
