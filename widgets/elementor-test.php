@@ -279,9 +279,14 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		}
 		?>
 
-		<!-- <pre>
-			<?php print_r($settings['show_elements']); ?>
-		</pre> -->
+		<?php 
+		$images=$settings['gallery'];
+		foreach($images as $image){
+			?>
+			<img src="<?php echo $image['url'] ;?>" alt="">
+			<?php 
+		}
+		?>
 
 		<ul>
 			<?php
