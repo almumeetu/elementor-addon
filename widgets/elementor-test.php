@@ -52,30 +52,61 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Hover Animation
+		$this->add_control(
+			'hover_animation',
+			[
+				'label' => esc_html__( 'Hover Animation', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+			]
+		);
+
+		//Exit Animation
+		$this->add_control(
+			'exit_animation',
+			[
+				'label' => esc_html__( 'Exit Animation', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::EXIT_ANIMATION,
+				'prefix_class' => 'animated ',
+			]
+		);
+
+
+		//Animation
+		$this->add_control(
+			'entrance_animation',
+			[
+				'label' => esc_html__( 'Entrance Animation', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::ANIMATION,
+				'prefix_class' => 'animated ',
+			]
+		);
+
+
 		//Repeater
 		$this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'elementor-addon' ),
+				'label' => esc_html__('Repeater List', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => [
 					[
 						'name' => 'list_title',
-						'label' => esc_html__( 'Title', 'elementor-addon' ),
+						'label' => esc_html__('Title', 'elementor-addon'),
 						'type' => \Elementor\Controls_Manager::TEXT,
-						'default' => esc_html__( 'List Title' , 'elementor-addon' ),
+						'default' => esc_html__('List Title', 'elementor-addon'),
 						'label_block' => true,
 					],
 					[
 						'name' => 'list_content',
-						'label' => esc_html__( 'Content', 'elementor-addon' ),
+						'label' => esc_html__('Content', 'elementor-addon'),
 						'type' => \Elementor\Controls_Manager::WYSIWYG,
-						'default' => esc_html__( 'List Content' , 'elementor-addon' ),
+						'default' => esc_html__('List Content', 'elementor-addon'),
 						'show_label' => false,
 					],
 					[
 						'name' => 'list_color',
-						'label' => esc_html__( 'Color', 'elementor-addon' ),
+						'label' => esc_html__('Color', 'elementor-addon'),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'selectors' => [
 							'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
@@ -84,12 +115,12 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 				],
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Title #1', 'elementor-addon' ),
-						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'elementor-addon' ),
+						'list_title' => esc_html__('Title #1', 'elementor-addon'),
+						'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'elementor-addon'),
 					],
 					[
-						'list_title' => esc_html__( 'Title #2', 'elementor-addon' ),
-						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'elementor-addon' ),
+						'list_title' => esc_html__('Title #2', 'elementor-addon'),
+						'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'elementor-addon'),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -101,7 +132,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'gallery',
 			[
-				'label' => esc_html__( 'Add Images', 'elementor-addon' ),
+				'label' => esc_html__('Add Images', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::GALLERY,
 				'show_label' => false,
 				'default' => [],
@@ -324,24 +355,29 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		}
 		?>
 
-		<?php 
-		$lists=$settings['list'];
-		foreach($lists as $list){
-			?>
+		<!-- Animation -->
+		<div class="repeat <?php echo $settings['exit_animation'] ; ?>">
+		<?php
+		$lists = $settings['list'];
+		foreach ($lists as $list) {
+		?>
 			<h4><?php echo $list['list_title']; ?></h4>
 			<p><?php echo $list['list_content']; ?></p>
-			<?php
+		<?php
 		}
-		
+
 		?>
+		</div>
 
 
-		<?php 
-		$images=$settings['gallery'];
-		foreach($images as $image){
-			?>
-			<img src="<?php echo $image['url'] ;?>" alt="">
-			<?php 
+
+
+		<?php
+		$images = $settings['gallery'];
+		foreach ($images as $image) {
+		?>
+			<img src="<?php echo $image['url']; ?>" alt="">
+		<?php
 		}
 		?>
 
@@ -356,6 +392,19 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			?>
 		</ul>
 
+		<?php 
+				$elementClass = 'container';
+
+				if ( $settings['hover_animation'] ) {
+					$elementClass .= ' elementor-animation-' . $settings['hover_animation'];
+				}
+		
+				$this->add_render_attribute( 'wrapper', 'class', $elementClass );
+				?>
+				<div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
+					
+				</div>
+	
 		<i class="<?php echo $settings['icon']['value']; ?>"></i>
 		<h2 style="text-align:<?php echo $settings['text_align']; ?>">Title: <?php echo $settings['title']; ?></h2>
 		<h4>Mobile Number: <?php echo $settings['mobile_number']; ?></h4>
