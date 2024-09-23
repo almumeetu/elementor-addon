@@ -52,11 +52,41 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Media Control 
+		$this->add_control(
+			'image',
+			[
+				'label' => esc_html__( 'Choose Image', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+
+		//Link Control
+		$this->add_control(
+			'website_link',
+			[
+				'label' => esc_html__( 'Link', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+					// 'custom_attributes' => '',
+				],
+				'label_block' => true,
+			]
+		);
+
 		//Hover Animation
 		$this->add_control(
 			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'textdomain' ),
+				'label' => esc_html__( 'Hover Animation', 'elementor-addon' ),
 				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -355,6 +385,9 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		}
 		?>
 
+
+		<img src="<?php echo $settings['image']['url']; ?>" alt="<?php echo $settings['image']['alt']; ?>">
+		<a href="<?php echo $settings['website_link']['url']; ?>">You Tube</a>
 		<!-- Animation -->
 		<div class="repeat <?php echo $settings['exit_animation'] ; ?>">
 		<?php
