@@ -52,6 +52,33 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+
+		//Text Shadow
+		$this->add_control(
+			'custom_text_shadow',
+			[
+				'label' => esc_html__( 'Text Shadow', 'elementor-addond' ),
+				'type' => \Elementor\Controls_Manager::TEXT_SHADOW,
+				'selectors' => [
+					'{{WRAPPER}} h2' => 'text-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{COLOR}};',
+				],
+			]
+		);
+
+
+		//Box Shadow
+		$this->add_control(
+			'custom_box_shadow',
+			[
+				'label' => esc_html__( 'Box Shadow', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::BOX_SHADOW,
+				'selectors' => [
+					'{{SELECTOR}}' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
+				],
+			]
+		);
+
+
 		//Media Control 
 		$this->add_control(
 			'image',

@@ -1,0 +1,26 @@
+.shop__categories {
+    padding: 50px 0;
+}
+
+.shop__categories .section__title .main__title {
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.category {
+    background-position: left bottom;
+    background-size: cover;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.category__author {
+    padding-left: 30px;
+}
+
+.category__img img {
+    max-width: 100px;
+}

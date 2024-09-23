@@ -153,6 +153,7 @@ final class Elementor_Addon_Extension
         add_action('elementor/init', [$this, 'elementor_addon_category']);
     }
 
+    
     /**
      * Admin Notice
      * 
@@ -287,5 +288,16 @@ final class Elementor_Addon_Extension
         );
     }
 }
+
+function register_shop_categories_widget( $widgets_manager ) {
+    require_once( __DIR__ . '/widgets/shop-categories.php' );
+    $widgets_manager->register( new \Shop_Categories_Widget() );
+}
+add_action( 'elementor/widgets/register', 'register_shop_categories_widget' );
+
+function shop_categories_widget_enqueue_styles() {
+    wp_enqueue_style( 'shop-categories-widget-style', plugins_url( '/css/shop-categories-widget.css', __FILE__ ) );
+}
+add_action( 'wp_enqueue_scripts', 'shop_categories_widget_enqueue_styles' );
 
 Elementor_Addon_Extension::instance();
