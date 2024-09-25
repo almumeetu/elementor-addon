@@ -52,6 +52,77 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		//Slider Control
+		$this->add_control(
+			'font_size',
+			[
+				'label' => esc_html__( 'Font Size', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 20,
+				],
+				'selectors' => [
+					'{{WRAPPER}} h2' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		//Dimensions
+
+		//Margin
+		$this->add_control(
+			'margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 2,
+					'right' => 0,
+					'bottom' => 2,
+					'left' => 0,
+					'unit' => 'em',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		//Padding
+		$this->add_control(
+			'padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 2,
+					'right' => 0,
+					'bottom' => 2,
+					'left' => 0,
+					'unit' => 'em',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} h2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
 		//Text Shadow
 		$this->add_control(
@@ -73,7 +144,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 				'label' => esc_html__( 'Box Shadow', 'elementor-addon' ),
 				'type' => \Elementor\Controls_Manager::BOX_SHADOW,
 				'selectors' => [
-					'{{SELECTOR}}' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
+					'{{WRAPPER}}' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
 				],
 			]
 		);
@@ -350,7 +421,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'color',
 			[
-				'label' => esc_html__('Color', 'textdomain'),
+				'label' => esc_html__('Color', 'elementor-addon'),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'red',
 				'options' => [
