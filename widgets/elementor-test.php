@@ -52,6 +52,17 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+
+		//UI Control
+		$this->add_control(
+			'more_options',
+			[
+				'label' => esc_html__( 'Additional Options', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+			]
+		);
+
 		//Slider Control
 		$this->add_control(
 			'font_size',
@@ -90,11 +101,11 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 2,
+					'top' => 1,
 					'right' => 0,
-					'bottom' => 2,
+					'bottom' => 1,
 					'left' => 0,
-					'unit' => 'em',
+					'unit' => 'rem',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -111,11 +122,11 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 2,
+					'top' => 1,
 					'right' => 0,
-					'bottom' => 2,
+					'bottom' => 1,
 					'left' => 0,
-					'unit' => 'em',
+					'unit' => 'rem',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -486,7 +497,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
 
 		<img src="<?php echo $settings['image']['url']; ?>" alt="<?php echo $settings['image']['alt']; ?>">
 		<a href="<?php echo $settings['website_link']['url']; ?>">You Tube</a>
-		<!-- Animation -->
+
 		<div class="repeat <?php echo $settings['exit_animation'] ; ?>">
 		<?php
 		$lists = $settings['list'];
